@@ -1,0 +1,20 @@
+===========================================================
+  CONCURRENT FAULT-TOLERANT RESULT PROCESSOR (Q7)        
+  Student: Korasika Sudheer | Register No: 192324313        
+===========================================================
+[SETUP] Generating 10,000 answer-script test dataset...
+[SETUP COMPLETED] Injected 50 missing files, 150 corrupted files, and 9800 valid files.
+
+---------------------------------------------------------------------------------
+Pool Size    | Elapsed Time    | Successes    | Failures     | Throughput  
+---------------------------------------------------------------------------------
+1            | 328          ms | 9800         | 200          | 30487.8    files/s (Speedup: 1.00x)
+2            | 167          ms | 9800         | 200          | 59880.2    files/s (Speedup: 1.96x)
+4            | 87           ms | 9800         | 200          | 114942.5   files/s (Speedup: 3.77x)
+8            | 98           ms | 9800         | 200          | 102040.8   files/s (Speedup: 3.35x)
+---------------------------------------------------------------------------------
+
+[VERIFICATION SUITE]
+Expected Failures: 200 (50 missing + 150 corrupt)
+Expected Successes: 9800 (9,800 valid)
+Zero unhandled worker thread exceptions. Run completed smoothly.
