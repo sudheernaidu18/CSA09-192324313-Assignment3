@@ -1,0 +1,21 @@
+===========================================================
+  RESOURCE SAFETY & TRY-WITH-RESOURCES INVESTIGATION     
+  Student: Korasika Sudheer | Register No: 192324313        
+===========================================================
+
+[MANUAL VERSION] Processing 5 files...
+[LOG ERROR] Parsing failure in store file: store_03_corrupt.txt
+[MANUAL EXCEPTION CAUGHT] NumberFormatException: Corrupted sales record token: 'ERR_DATA_NULL'
+[AUDIT MANUAL] Open File Handles Remaining Unclosed: 1
+
+[SAFE VERSION - try-with-resources] Processing 5 files...
+[LOG ERROR] Detected corrupted data in: store_03_corrupt.txt
+[SAFE RECOVERY] Logged corrupt file 'store_03_corrupt.txt'. Resource closed automatically. Continuing execution.
+[SAFE SUCCESS] Report completed with zero resource leaks.
+[AUDIT SAFE] Open File Handles Remaining: 0
+
+-----------------------------------------------------------
+COMPARISON SUMMARY:
+Manual version file descriptor leaks on failure: 1
+Safe try-with-resources file descriptor leaks:   0
+-----------------------------------------------------------
