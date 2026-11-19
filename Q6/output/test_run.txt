@@ -1,0 +1,23 @@
+===========================================================
+  MESS TOKEN COUNTER - PRODUCER-CONSUMER (TODO 1 & 2)    
+  Student: Korasika Sudheer | Register No: 192324313        
+===========================================================
+Sum of tokens collected: 210 (expected 210)
+
+===========================================================
+  WALLET TRANSFER: DEADLOCK DIAGNOSIS & SAFE ORDERING    
+  Student: Korasika Sudheer | Register No: 192324313        
+===========================================================
+
+--- Part A: Testing Safe Ordered Lock Transfers ---
+[SAFE SUCCESS] Completed 100 reciprocal transfers without deadlock!
+Final Wallet A Balance: Rs. 1000.0 | Wallet B: Rs. 1000.0
+
+--- Part B: Demonstrating ReentrantLock tryLock() Alternative ---
+tryLock() Transfer Succeeded: true | Balances: A=950.0, B=1050.0
+
+--- Part C: Controlled Deadlock Reproduction Simulation ---
+Thread 1: Locks Account 101 -> Requests Account 102
+Thread 2: Locks Account 102 -> Requests Account 101
+Result: Circular dependency detected (Mutual Exclusion + Hold & Wait + No Preemption + Circular Wait).
+Deadlock prevented in production by strict resource ordering: firstLock = min(id1, id2).
