@@ -1,0 +1,32 @@
+===========================================================
+  CINEMA SEAT BOOKING - SYNCHRONIZATION VERIFICATION    
+  Student: Korasika Sudheer | Register No: 192324313        
+===========================================================
+Seats sold: 10
+
+===========================================================
+  CINEMA RACE CONDITION FORENSICS & BENCHMARK SUITE     
+  Student: Korasika Sudheer | Register No: 192324313        
+===========================================================
+
+--- Experiment A: 10 Runs of Unsynchronized Booking (Target = 10 seats) ---
+Run #01 -> Seats Sold: 58 [CRITICAL RACE ANOMALY: Double Booking Detected!]
+Run #02 -> Seats Sold: 27 [CRITICAL RACE ANOMALY: Double Booking Detected!]
+Run #03 -> Seats Sold: 53 [CRITICAL RACE ANOMALY: Double Booking Detected!]
+Run #04 -> Seats Sold: 61 [CRITICAL RACE ANOMALY: Double Booking Detected!]
+Run #05 -> Seats Sold: 67 [CRITICAL RACE ANOMALY: Double Booking Detected!]
+Run #06 -> Seats Sold: 63 [CRITICAL RACE ANOMALY: Double Booking Detected!]
+Run #07 -> Seats Sold: 70 [CRITICAL RACE ANOMALY: Double Booking Detected!]
+Run #08 -> Seats Sold: 61 [CRITICAL RACE ANOMALY: Double Booking Detected!]
+Run #09 -> Seats Sold: 62 [CRITICAL RACE ANOMALY: Double Booking Detected!]
+Run #10 -> Seats Sold: 64 [CRITICAL RACE ANOMALY: Double Booking Detected!]
+Total Anomaly Runs with Double Bookings: 10 / 10
+
+--- Experiment B: 10 Runs of Synchronized Method Booking ---
+Synchronized Method 10-Run Result: Exactly 10 seats sold on every run = true
+
+--- Experiment C: High-Contention Benchmark (10,000 Booking Requests) ---
+Benchmark Results for 10,000 Threads:
+  1. Synchronized Method (Coarse Lock):      279 ms | Seats Sold: 100
+  2. Fine-Grained Synchronized Block:        276 ms | Seats Sold: 100
+  3. Lock-Free AtomicBoolean.compareAndSet:  277 ms | Seats Sold: 100
