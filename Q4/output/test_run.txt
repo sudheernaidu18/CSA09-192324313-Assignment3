@@ -1,0 +1,40 @@
+===========================================================
+  PARALLEL SCANNER: THREAD LIFECYCLE & SCHEDULING        
+  Student: Korasika Sudheer | Register No: 192324313        
+===========================================================
+
+--- Part A: Executing via Extending Thread ---
+[ScannerStation-Thread-2] Finished scanning 10 scripts. Thread State: RUNNABLE
+[ScannerStation-Thread-1] Finished scanning 10 scripts. Thread State: RUNNABLE
+
+--- Part B: Executing via Implementing Runnable ---
+[ScannerTask-3 via Scanner-3] Finished scanning 10 scripts.
+[ScannerTask-4 via Scanner-4] Finished scanning 10 scripts.
+
+--- Part C: 10 Runs Finish Order Non-Determinism Table ---
+Run #01 Finish Sequence: [3, 1, 2, 4]
+Run #02 Finish Sequence: [1, 4, 3, 2]
+Run #03 Finish Sequence: [4, 1, 3, 2]
+Run #04 Finish Sequence: [4, 2, 1, 3]
+Run #05 Finish Sequence: [4, 1, 2, 3]
+Run #06 Finish Sequence: [1, 4, 3, 2]
+Run #07 Finish Sequence: [1, 4, 2, 3]
+Run #08 Finish Sequence: [4, 1, 3, 2]
+Run #09 Finish Sequence: [1, 4, 3, 2]
+Run #10 Finish Sequence: [4, 1, 2, 3]
+
+--- Part D: Priority Bias Experiment (Station 4=MAX, Station 1=MIN) ---
+Priority Run #1 Sequence: [4, 1, 2, 3]
+Priority Run #2 Sequence: [2, 3, 4, 1]
+Priority Run #3 Sequence: [3, 1, 4, 2]
+
+--- [PROOF] Calling run() vs start() ---
+1. Invoking run() directly:
+Inside worker: Thread Name = main (Is Daemon=false)
+2. Invoking start():
+Inside worker: Thread Name = WorkerThread-X (Is Daemon=false)
+
+--- [EXPERIMENT] Daemon Thread Verification ---
+[DAEMON STATION] Background audit scanner started...
+[DAEMON STATION] Scanned batch heartbeat #1
+[MAIN] Main thread exiting. Watch JVM terminate daemon without finishing 10 batches.
