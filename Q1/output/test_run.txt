@@ -1,0 +1,36 @@
+===========================================================
+  BANK ATM SIMULATION - EXCEPTION HANDLING VERIFICATION  
+  Student: Korasika Sudheer | Register No: 192324313        
+===========================================================
+
+-----------------------------------------------------------
+Processing Withdrawal: Acc=192324313, Amount=3500.00
+[AUDIT] Card authenticated. ATM transaction session established.
+[SUCCESS] Cash Dispensed: Rs. 3500.0
+[INFO] Remaining Account Balance: Rs. 11500.0
+[FINALLY] Session Terminated. Card ejected safely. Hardware bus reset.
+
+-----------------------------------------------------------
+Processing Withdrawal: Acc=ACC_ABC_INVALID, Amount=2000.00
+[AUDIT] Card authenticated. ATM transaction session established.
+[CATCH - Multi-Catch Unchecked Exception] Input Validation Failed: Invalid account number format: Alphabets or symbols detected.
+[FINALLY] Session Terminated. Card ejected safely. Hardware bus reset.
+
+-----------------------------------------------------------
+Processing Withdrawal: Acc=192324313, Amount=-500.00
+[AUDIT] Card authenticated. ATM transaction session established.
+[CATCH - Multi-Catch Unchecked Exception] Input Validation Failed: Withdrawal amount must be strictly positive (> 0). Provided: -500.0
+[FINALLY] Session Terminated. Card ejected safely. Hardware bus reset.
+
+-----------------------------------------------------------
+Processing Withdrawal: Acc=192324313, Amount=50000.00
+[AUDIT] Card authenticated. ATM transaction session established.
+[CATCH - Domain Rule Checked Exception] Transaction Declined: Insufficient balance in account. Shortfall deficit: Rs. 38500.0
+[FINALLY] Session Terminated. Card ejected safely. Hardware bus reset.
+
+-----------------------------------------------------------
+Processing Withdrawal: Acc=192324313, Amount=1000.00
+[CATCH - Hardware Checked Exception] Card reader sensor file missing or hardware disconnected.
+[FINALLY] Transaction aborted. ATM returned to standby mode.
+
+[SUMMARY] All 5 test paths executed with guaranteed finally cleanup.
