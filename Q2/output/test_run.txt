@@ -1,0 +1,26 @@
+===========================================================
+  EXAM PORTAL STORAGE DEMO - TODO 1 VERIFICATION         
+  Student: Korasika Sudheer | Register No: 192324313        
+===========================================================
+Saved answer01.pdf
+Error: Could not store answer02.pdf
+Cause: Disk quota exceeded
+
+===========================================================
+  ONLINE EXAM PORTAL - 3-LAYER PROPAGATION & CHAINING    
+  Student: Korasika Sudheer | Register No: 192324313        
+===========================================================
+
+--- [CONTROLLER] Incoming Submission Request: Student=192324313 ---
+[STORAGE] Script stored successfully on distributed disk: Sudheer_Java_CO3.pdf
+[CONTROLLER RESPONSE: HTTP 200 OK] Submission Confirmed! Acknowledgment ID: ACK-192324313
+
+--- [CONTROLLER] Incoming Submission Request: Student=999999999 ---
+[CONTROLLER ERROR: HTTP 403 FORBIDDEN] Student ID '999999999' is not enrolled in CSA09 Java Course.
+
+--- [CONTROLLER] Incoming Submission Request: Student=192324313 ---
+[CONTROLLER ERROR: HTTP 410 GONE] Submission rejected: Exam window closed at 15:00 (attempted at 15:15).
+
+--- [CONTROLLER] Incoming Submission Request: Student=192324314 ---
+[CONTROLLER ERROR: HTTP 507 INSUFFICIENT STORAGE] Could not store answer script Oversized_Project.pdf for student 192324314
+  ↳ Underlying Root Cause: java.io.IOException -> POSIX write failure: storage volume reached limit 500KB (requested 950KB).
